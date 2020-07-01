@@ -23,18 +23,27 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 app.use(cors());
 // Initialize the main project folder
-app.use(express.static('website'));
+app.use(express.static('dist'));
 
 //the routes of the app
 
 app.post('/add', (req, res) => {
-	let data = req.body;
+	// let data = req.body;
 
-	projectData = {
-		temperature: data.main.temp,
-		date: data.date,
-		user: data.user
+	// projectData = {
+	// 	temperature: data.main.temp,
+	// 	date: data.date,
+	// 	user: data.user
+	// };
+	// console.log(projectData);
+	// res.send(projectData);
+
+	newEntry = {
+		temperature: req.body.main.temp,
+		user: req.body.user,
+		date: req.body.date
 	};
+	projectData = newEntry;
 	console.log(projectData);
 	res.send(projectData);
 });
@@ -45,6 +54,6 @@ app.get('/all', (req, res) => {
 });
 
 // Setup Server
-app.listen(8080, () => {
+app.listen(8081, () => {
 	console.log('app running');
 });

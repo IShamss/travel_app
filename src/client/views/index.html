@@ -7,7 +7,7 @@
 			href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="style.css" />
+		<!-- <link rel="stylesheet" href="style.css" /> -->
 	</head>
 	<body>
 		<div id="app">
@@ -27,7 +27,14 @@
 					rows="9"
 					cols="50"
 				></textarea>
-				<button id="generate" type="submit">Generate</button>
+				<button
+					id="generate"
+					type="submit"
+					onclick="return Client.mainFunc(event)"
+					onsubmit="return Client.mainFunc(event)"
+				>
+					Generate
+				</button>
 			</div>
 			<div class="holder entry">
 				<div class="title">Most Recent Entry</div>
