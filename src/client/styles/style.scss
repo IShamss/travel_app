@@ -1,111 +1,198 @@
-body{
-    background: #fffff8;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+$hand: 'Courgette', cursive;
+$normal: 'Lora', serif;
+body {
+	background: #fffff8;
+	font-family: $normal;
+	a {
+		text-decoration: none;
+	}
+	background: linear-gradient(
+		74deg,
+		rgba(255, 191, 178, 0.2589986678265056) 0%,
+		rgba(183, 235, 238, 0.15535721124387258) 14%,
+		rgba(0, 212, 255, 0.07692583869485292) 100%
+	);
 }
 
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
+#app {
+	display: grid;
+	grid-template-rows: 70px auto 150px;
+	margin: 0 auto;
+	width: 100%;
+	// justify-content: center;
+	grid-gap: 2em;
+	// font-size: 20px;
+	header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0 30px;
+
+		div {
+			margin: auto 30px;
+		}
+		.headline {
+			margin: auto 5px;
+			font-size: 28px;
+			font-family: $hand;
+		}
+		a {
+			margin: 0 5px;
+			font-size: 20px;
+			color: black;
+			opacity: 0.6;
+			transition: opacity 0.4s linear;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+	.body {
+		display: grid;
+		grid-template-columns: 50% 50%;
+		// background-color: yellow;
+		label {
+			font-size: 20px;
+			font-family: $normal;
+			margin: 35px;
+		}
+		input,
+		textarea {
+			display: block;
+			// height: 60px;
+			// width: 320px;
+			padding: 10px;
+			background: rgba(59, 56, 240, 0.123);
+			font-size: 20px;
+			font-family: $normal;
+			border: 0.3px solid rgba(224, 125, 125, 0.123);
+			border-radius: 10px;
+			margin: 20px 40px;
+			transition: background 0.5s linear;
+			&:hover {
+				background: rgba(59, 56, 240, 0.589);
+			}
+		}
+		.inputs {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			.country_input,
+			.date_input,
+			.postal_input {
+				margin: 20px 0;
+			}
+			#generate {
+				font-family: $normal;
+				font-size: 20px;
+				box-shadow: 2px 4px 5px rgba(176, 58, 245, 0.329);
+				background-color: rgba(56, 188, 240, 0.123);
+				border: 0.3px solid rgba(255, 191, 178, 0.2589986678265056);
+				border-radius: 10px;
+				margin: 30px;
+				width: 300px;
+				height: 90px;
+				transition: box-shadow 0.3s linear;
+				&:hover {
+					box-shadow: 2px 4px 5px rgba(176, 58, 245, 0.6);
+				}
+			}
+		}
+		.results {
+			font-size: 20px;
+			justify-content: center;
+			align-items: center;
+			#image_container {
+				border: none;
+				border-radius: 20px;
+				height: 400px;
+				width: 600px;
+				background-size: cover;
+				background-position: center; /* Center the image */
+				background-repeat: no-repeat;
+				// background-image: url('https://cdn.pixabay.com/photo/2020/06/22/19/30/automobile-5330343_1280.jpg');
+			}
+			#title {
+				margin-left: 250px;
+				color: rgb(208, 109, 247);
+				font-size: 30px;
+				font-family: $hand;
+				font-weight: normal;
+			}
+			#data {
+				font-size: 25px;
+				font-family: $normal;
+				#lat,
+				#long,
+				#max_temp,
+				#min_temp,
+				#avg_temp,
+				#wind_spd,
+				#clouds {
+					margin: 15px 0;
+				}
+			}
+		}
+	}
+	.foot {
+		.follow {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 26px;
+			font-family: $hand;
+			i {
+				margin: 0 10px;
+				font-size: 30px;
+				opacity: 0.5;
+				transition: opacity 0.3s linear;
+				&:hover {
+					opacity: 1;
+					cursor: pointer;
+				}
+			}
+		}
+	}
 }
+// media queries
+@media (max-width: 900px) {
+	#app {
+		display: flex;
+		flex-direction: column;
+		font-size: 10px;
+		.body {
+			display: grid;
+			grid-template-rows: auto auto;
+			grid-template-columns: 1fr;
+		}
 
-.holder{
+		header {
+			justify-content: center;
+			align-items: center;
 
+			.options {
+				display: none;
+			}
+		}
+		.foot {
+			align-items: center;
+		}
+		#image_container {
+			width: 3em;
+			height: 1em;
+		}
+	}
 }
-
-.entry{
-    background: rgba(59, 74, 107, .4);
+@media (max-width: 1100px) and (min-width: 900px) {
+	#app {
+		grid-template-rows: 60px auto 100px;
+		.body {
+			grid-template-columns: 30% 70%;
+		}
+		textarea {
+			width: 60px;
+		}
+	}
 }
-
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
-}
-
-.headline {
-
-}
-.title{
-
-}
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
-}
-
-input{
-    display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-}
-
-button{
-    width: 400px;
-    height: 100px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
-    font-family: 'Oswald', sans-serif;
-    border: none;
-    box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
-}
-
-textarea{
-    background:#22b2da;
-    color: #f0d43a;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-    outline: none;
-}
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 

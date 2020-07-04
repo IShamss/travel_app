@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 // app.use(express.static('website'));
 
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+let projectData = {};
 
 // Require Express to run server and routes
 
@@ -28,20 +28,11 @@ app.use(express.static('dist'));
 //the routes of the app
 
 app.post('/add', (req, res) => {
-	// let data = req.body;
-
-	// projectData = {
-	// 	temperature: data.main.temp,
-	// 	date: data.date,
-	// 	user: data.user
-	// };
-	// console.log(projectData);
-	// res.send(projectData);
-
 	newEntry = {
-		temperature: req.body.main.temp,
-		user: req.body.user,
-		date: req.body.date
+		date: req.body.date,
+		first: req.body.first,
+		second: req.body.second,
+		third: req.body.third
 	};
 	projectData = newEntry;
 	console.log(projectData);
@@ -55,5 +46,8 @@ app.get('/all', (req, res) => {
 
 // Setup Server
 app.listen(8081, () => {
-	console.log('app running');
+	console.log('app running on port 8081');
 });
+
+module.exports = projectData;
+// export { projectData };
